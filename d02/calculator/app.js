@@ -14,23 +14,33 @@ var calc = {
                   divide: function(a,b) {return a/b}
               },
     equals: document.querySelector('#equal'),
-    init: function() {
-              for(var i=0; i < calc.buttonsArr.length; i ++) {
-                calc.buttonsArr[i].addEventListener('click', function() {
-                  calc.calculation.push(this.innerHTML)
-                  console.log(calc.calculation)
-                    if (calc.calculation.length < 4 && calc.calculation[1] == calc.buttonsArr[12].innerHTML) {
-                      return calc.operations.add(Number(calc.calculation[0]), (Number(calc.calculation[2])))
-                    }
-                })
-              }
-          },
+}
+
+function init() {
+  // For loop for the number buttons
+    for(var i=0; i < calc.buttonsArr.length; i ++) {
+      calc.buttonsArr[i].addEventListener('click', function() {
+      calc.calculation.push(this.innerHTML)
+      console.log(calc.calculation)
+      })
+    }
+    // For loop for the operator buttons
+    for(var x=0; x < calc.operatorsArr.length; x ++ ) {
+        calc.operatorsArr[x].addEventListener('click', function() {
+        calc.calulation.push(this.innerHTML)
+        console.log(calc.calculation)
+      })
+    }
+    calc.clear.addEventListener('click', function() {
+      calc.calculation = []
+      console.log('Emptied the array')
+    })
+    calc.equals.addEventListener('click', function() {
+      console.log('Its about to go down')
+    })
   }
 
-
-
-
-  calc.init()
+init();
 
 
 
