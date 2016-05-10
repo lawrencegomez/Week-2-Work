@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Wac-a-moleeee</title>
+
+    <style media="screen">
+
+    body {
+
+    }
+
+    .container {
+      width: 900px;
+      height: 900px;
+      background-color: rgb(102, 204, 255);
+      border: 10px solid #663300;
+      cursor: url('./mallet.png'), auto;
+    }
+
+    .hole {
+      width: 246px;
+      height: 246px;
+      float: left;
+      /*display: inline-block;*/
+      border: 20px solid #663300;
+      border-radius: 150px;
+      background-color: orange;
+      margin:6px;
+    }
+
+    .hole:active {
+      background-color: red;
+    }
+
+    img {
+      width: 105%;
+      margin: 15px 0 0 -6px;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+    </div>
+
+    <script type="text/javascript">
+
+
+
+    // var firstHole = document.querySelector('.hole')
+    var holes = document.querySelectorAll('.hole')
+
+
+
+
+    // function moveMoley() {
+    //   holes.innerHTML = '<img src="mole.png"/>'
+    // }
+
+    var scrambleNum = function() {
+      return Math.floor((Math.random() * 9))
+    }
+
+
+    holes[scrambleNum()].innerHTML = '<img src="mole.png"/>'
+    var moley = document.querySelector('img')
+
+    var newHole = function() {
+      scrambleNum();
+      holes[scrambleNum()].innerHTML = '<img src="mole.png"/>'
+    }
+
+
+    for (var i = 0; i < holes.length; i ++) {
+      holes[i].addEventListener('click', function() {
+        console.log('clicked')
+        if(this.innerHTML !== '') {
+          console.log('something inside of here')
+          this.innerHTML = ''
+          newHole()
+        }
+      })
+  }
+
+    // for (var i = 0; i < holes.length; i ++) {
+    //   holes[i].addEventListener('click', function() {
+    //   // scrambleHole();
+    //   })
+    // }
+
+
+    // moley.addEventListener('click', newHole)
+
+
+
+    </script>
+
+  </body>
+</html>
