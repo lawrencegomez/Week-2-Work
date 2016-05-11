@@ -14,40 +14,54 @@ var calc = {
                   divide: function(a,b) {return a/b}
               },
     equals: document.querySelector('#equal'),
+    screens: document.querySelector('input')
+}
+
+function clear() {
+  calc.calculation = []
+  calc.screens.value = ''
+  console.log('cleared it')
 }
 
 function init() {
   // For loop for the number buttons
     for(var i=0; i < calc.buttonsArr.length; i ++) {
       calc.buttonsArr[i].addEventListener('click', function() {
-      calc.calculation.push(this.innerHTML)
-      console.log(calc.calculation)
+      calc.screens.value += this.innerHTML
       })
     }
     // For loop for the operator buttons
     for(var x=0; x < calc.operatorsArr.length; x ++ ) {
       calc.operatorsArr[x].addEventListener('click', function() {
+      calc.calculation.push(calc.screens.value)
       calc.calculation.push(this.innerHTML)
+      calc.screens.value = ''
       console.log(calc.calculation)
       })
     }
     // added event listener for the clear button
-    calc.clear.addEventListener('click', function() {
-      calc.calculation = []
-      console.log('Emptied the array')
-    })
+    calc.clear.addEventListener('click', clear)
+
     // added event listener for the equals button
     calc.equals.addEventListener('click', function() {
-        if (calc.calculation[1] == calc.operatorsArr[1].innerHTML) {
+      if (calc.calculation[1] == calc.operatorsArr[1].innerHTML) {
+          calc.calculation.push(calc.screens.value)
+          calc.screens.value = calc.operations.add(Number(calc.calculation[0]),Number(calc.calculation[2]))
         console.log(calc.operations.add(Number(calc.calculation[0]),Number(calc.calculation[2])))
       }
       else if (calc.calculation[1] == calc.operatorsArr[0].innerHTML) {
+        calc.calculation.push(calc.screens.value)
+        calc.screens.value = calc.operations.subtract(Number(calc.calculation[0]),Number(calc.calculation[2]))
         console.log(calc.operations.subtract(Number(calc.calculation[0]),Number(calc.calculation[2])))
       }
       else if (calc.calculation[1] == calc.operatorsArr[3].innerHTML) {
+        calc.calculation.push(calc.screens.value)
+        calc.screens.value = calc.operations.multiply(Number(calc.calculation[0]),Number(calc.calculation[2]))
         console.log(calc.operations.multiply(Number(calc.calculation[0]),Number(calc.calculation[2])))
       }
       else if (calc.calculation[1] == calc.operatorsArr[2].innerHTML) {
+        calc.calculation.push(calc.screens.value)
+        calc.screens.value = calc.operations.divide(Number(calc.calculation[0]),Number(calc.calculation[2]))
         console.log(calc.operations.divide(Number(calc.calculation[0]),Number(calc.calculation[2])))
       }
     })
