@@ -1,7 +1,4 @@
-// Need the function (+ - * /)
-// add event listeners to things
-// clicks will console log the value of what is clicked
-//
+
 
 var calc = {
     buttonsArr: document.querySelectorAll('.num'),
@@ -20,7 +17,7 @@ var calc = {
 function clear() {
   calc.calculation = []
   calc.screens.value = ''
-  console.log('cleared it')
+  calc.screens.placeholder = 'hello'
 }
 
 function init() {
@@ -36,6 +33,7 @@ function init() {
       calc.calculation.push(calc.screens.value)
       calc.calculation.push(this.innerHTML)
       calc.screens.value = ''
+      calc.screens.placeholder = ''
       console.log(calc.calculation)
       })
     }
@@ -47,22 +45,22 @@ function init() {
       if (calc.calculation[1] == calc.operatorsArr[1].innerHTML) {
           calc.calculation.push(calc.screens.value)
           calc.screens.value = calc.operations.add(Number(calc.calculation[0]),Number(calc.calculation[2]))
-        console.log(calc.operations.add(Number(calc.calculation[0]),Number(calc.calculation[2])))
+          calc.calculation = []
       }
       else if (calc.calculation[1] == calc.operatorsArr[0].innerHTML) {
         calc.calculation.push(calc.screens.value)
         calc.screens.value = calc.operations.subtract(Number(calc.calculation[0]),Number(calc.calculation[2]))
-        console.log(calc.operations.subtract(Number(calc.calculation[0]),Number(calc.calculation[2])))
+        calc.calculation = []
       }
       else if (calc.calculation[1] == calc.operatorsArr[3].innerHTML) {
         calc.calculation.push(calc.screens.value)
         calc.screens.value = calc.operations.multiply(Number(calc.calculation[0]),Number(calc.calculation[2]))
-        console.log(calc.operations.multiply(Number(calc.calculation[0]),Number(calc.calculation[2])))
+        calc.calculation = []
       }
       else if (calc.calculation[1] == calc.operatorsArr[2].innerHTML) {
         calc.calculation.push(calc.screens.value)
         calc.screens.value = calc.operations.divide(Number(calc.calculation[0]),Number(calc.calculation[2]))
-        console.log(calc.operations.divide(Number(calc.calculation[0]),Number(calc.calculation[2])))
+        calc.calculation = []
       }
     })
   }

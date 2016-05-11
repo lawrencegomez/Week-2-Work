@@ -1,13 +1,46 @@
+@font-face {
+    font-family: myFont;
+    src: url('digital-7.ttf');
+}
+
 button {
   height: 60px;
   width: 60px;
   border: 2px solid black;
+  padding: 5px;
+  font-family: myFont;
+  font-size: 20px;
+}
+
+button:active {
+  background-color: purple;
 }
 
 input {
-  width: 200px;
+  width: 240px;
   height: 50px;
   border: 5px solid black;
   text-align: right;
   font-size: 25px;
+  background-color: #D8D8D8;
+  font-family: myFont;
+  font-size: 30px;
+}
+
+.container {
+  height: 350px;
+  width: 300px;
+  text-align: center;
+  margin: 100px 0 0 380px;
+  background-color: green;
+  padding-top: 30px;
+
+}
+
+.operator, #clear, #equal {
+   background-color: #1C5D6D;
+}
+
+.operator, #clear, #equal {
+   background-color: #1C5D6D;
 }
